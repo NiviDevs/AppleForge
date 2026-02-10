@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { AuditLogPanel } from "../components/dashboard/AuditLogPanel";
 import { DecisionFeed } from "../components/dashboard/DecisionFeed";
 import { EnergyPanel } from "../components/dashboard/EnergyPanel";
 import { PriorityPanel } from "../components/dashboard/PriorityPanel";
@@ -8,7 +7,7 @@ import { useSseStream } from "../hooks/useSseStream";
 import { setScenario } from "../lib/api";
 
 export function App(): JSX.Element {
-  const { latest, history, connected } = useSseStream();
+  const { latest, history, connected, clearHistory } = useSseStream();
   const [activeScenario, setActiveScenario] = useState<"normal" | "outage" | "critical">("normal");
   const alertLevel = latest?.policy.alertLevel ?? "NORMAL";
 
@@ -54,9 +53,8 @@ export function App(): JSX.Element {
         <PriorityPanel latest={latest} />
       </section>
 
-      <section className="grid-2">
-        <DecisionFeed history={history} />
-        <AuditLogPanel history={history} />
+      <section className="grid-1">
+        <DecisionFeed history={history} onClear={clearHistory} />
       </section>
     </main>
   );

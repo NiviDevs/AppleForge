@@ -32,9 +32,7 @@ class EvmChainLogger implements ChainLogger {
       input.tier,
       input.pscoreBps
     );
-
-    const receipt = await tx.wait();
-    return receipt?.hash;
+    return tx.hash;
   }
 }
 

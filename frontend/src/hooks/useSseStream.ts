@@ -6,6 +6,7 @@ export function useSseStream(): {
   latest: DecisionPayload | null;
   history: DecisionPayload[];
   connected: boolean;
+  clearHistory: () => void;
 } {
   const [latest, setLatest] = useState<DecisionPayload | null>(null);
   const [history, setHistory] = useState<DecisionPayload[]>([]);
@@ -32,5 +33,9 @@ export function useSseStream(): {
     };
   }, []);
 
-  return { latest, history, connected };
+  const clearHistory = (): void => {
+    setHistory([]);
+  };
+
+  return { latest, history, connected, clearHistory };
 }
