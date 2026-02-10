@@ -4,6 +4,7 @@
   --bg-0: #f7f3ea;
   --bg-1: #efe5cf;
   --bg-2: #d7e4f2;
+  --alert-tint: transparent;
   --ink: #1a1f24;
   --muted: #57616f;
   --panel: #ffffffcc;
@@ -23,9 +24,19 @@ body {
   font-family: "Space Grotesk", "Segoe UI", sans-serif;
   color: var(--ink);
   background:
+    linear-gradient(var(--alert-tint), var(--alert-tint)),
     radial-gradient(circle at 10% 10%, var(--bg-2), transparent 35%),
     radial-gradient(circle at 80% 0%, #f0d9c2, transparent 30%),
     linear-gradient(135deg, var(--bg-0), var(--bg-1));
+  transition: background 220ms ease;
+}
+
+body.alert-monitor {
+  --alert-tint: rgb(255 214 10 / 18%);
+}
+
+body.alert-critical {
+  --alert-tint: rgb(212 38 38 / 22%);
 }
 
 .shell {
@@ -147,6 +158,87 @@ body {
 
 .stat-grid strong {
   font-size: 1.05rem;
+}
+
+.priority-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.priority-item {
+  border-bottom: 1px solid #00000014;
+  padding-bottom: 8px;
+}
+
+.priority-label {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.priority-value {
+  display: block;
+  margin-top: 2px;
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+.priority-help {
+  margin: 4px 0 0;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.control-grid {
+  margin-top: 12px;
+  display: grid;
+  gap: 10px;
+}
+
+.control-row {
+  display: grid;
+  gap: 6px;
+}
+
+.control-row label {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.control-row input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--ink);
+}
+
+.toggle input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+}
+
+.control-reset {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.control-reset:hover {
+  background: #f4f7fb;
 }
 
 .panel-feed ul {

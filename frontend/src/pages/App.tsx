@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AuditLogPanel } from "../components/dashboard/AuditLogPanel";
 import { DecisionFeed } from "../components/dashboard/DecisionFeed";
 import { EnergyPanel } from "../components/dashboard/EnergyPanel";
@@ -10,6 +10,20 @@ import { setScenario } from "../lib/api";
 export function App(): JSX.Element {
   const { latest, history, connected } = useSseStream();
   const [activeScenario, setActiveScenario] = useState<"normal" | "outage" | "critical">("normal");
+  const alertLevel = latest?.policy.alertLevel ?? "NORMAL";
+
+  useEffect(() => {
+    document.body.classList.remove("alert-monitor", "alert-critical");
+
+    if (alertLevel === "MONITOR") {
+      document.body.classList.add("alert-monitor");
+      return;
+    }
+
+    if (alertLevel === "CRITICAL") {
+      document.body.classList.add("alert-critical");
+    }
+  }, [alertLevel]);
 
   const triggerScenario = async (scenario: "normal" | "outage" | "critical"): Promise<void> => {
     await setScenario(scenario);
