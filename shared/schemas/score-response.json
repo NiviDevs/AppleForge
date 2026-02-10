@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ScoreResponse",
+  "type": "object",
+  "required": ["s_crit", "pscore", "decision", "decisionHash"],
+  "properties": {
+    "s_crit": { "type": "number", "minimum": 0, "maximum": 1 },
+    "pscore": { "type": "number", "minimum": 0, "maximum": 1 },
+    "decision": { "type": "string" },
+    "decisionHash": { "type": "string" }
+  }
+}

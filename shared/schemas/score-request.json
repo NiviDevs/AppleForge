@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ScoreRequest",
+  "type": "object",
+  "required": ["spo2", "hr", "bp", "roomClass", "equipmentTier", "energy"],
+  "properties": {
+    "spo2": { "type": "number", "minimum": 70, "maximum": 100 },
+    "hr": { "type": "number", "minimum": 40, "maximum": 200 },
+    "bp": { "type": "number", "minimum": 70, "maximum": 200 },
+    "roomClass": { "type": "string", "enum": ["ICU", "ER", "Lobby"] },
+    "equipmentTier": { "type": "string", "enum": ["T1", "T2", "T3", "T4"] },
+    "energy": {
+      "type": "object",
+      "required": ["pgrid", "batteryLevel", "fuel"],
+      "properties": {
+        "pgrid": { "type": "integer", "enum": [0, 1] },
+        "batteryLevel": { "type": "number", "minimum": 0, "maximum": 100 },
+        "fuel": { "type": "number", "minimum": 0, "maximum": 100 }
+      }
+    }
+  }
+}

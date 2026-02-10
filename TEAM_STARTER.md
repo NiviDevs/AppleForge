@@ -3,6 +3,13 @@
 Purpose
 Build a fault-tolerant, energy-aware hospital management demo that prioritizes care and logs decisions on-chain for auditability.
 
+Monorepo Structure
+1. `backend/` -> Express API, scoring engine, simulator, scenario controls, and chain logger integration.
+2. `frontend/` -> React dashboard consuming `/stream` and `/scenario`.
+3. `contracts/` -> Hardhat project with `DecisionLog.sol`.
+4. `shared/` -> JSON schemas and canonical mappings.
+5. `docs/` -> presentation outline, architecture notes, API notes, demo script.
+
 Success Criteria
 
 1. Live demo shows vitals, energy state, priority score, and decision output.

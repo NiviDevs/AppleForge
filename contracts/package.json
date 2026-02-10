@@ -1,0 +1,21 @@
+{
+  "name": "appleforge-contracts",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "node -e \"console.log('contract tests pending')\"",
+    "node": "hardhat node",
+    "deploy:localhost": "hardhat run scripts/deploy.ts --network localhost"
+  },
+  "devDependencies": {
+    "@jridgewell/trace-mapping": "^0.3.31",
+    "@nomicfoundation/hardhat-ethers": "^3.0.8",
+    "@types/node": "^22.19.10",
+    "ethers": "^6.16.0",
+    "hardhat": "^2.19.5",
+    "source-map": "^0.6.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}

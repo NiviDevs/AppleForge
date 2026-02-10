@@ -1,15 +1,23 @@
-# Remix compiler artifacts
+# Node / workspace
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+**/dist/
+coverage/
+
+# Vite
+.vite/
+
+# Hardhat / Solidity
 **/artifacts/
-**/artifacts/**
+**/cache/
 
-# Remix plugin state folders
-deps/
-states/
-
-# Debug info
-*.dbg.json
+# TypeScript
 *.tsbuildinfo
 
-# Optional
+# Env files
 .env
 .env.local
+.env.*.local

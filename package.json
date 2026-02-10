@@ -1,0 +1,22 @@
+{
+  "name": "appleforge",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "backend",
+    "frontend",
+    "contracts"
+  ],
+  "scripts": {
+    "dev": "concurrently -n backend,frontend -c cyan,green \"npm run dev -w backend\" \"npm run dev -w frontend\"",
+    "dev:backend": "npm run dev -w backend",
+    "dev:frontend": "npm run dev -w frontend",
+    "dev:chain": "npm run node -w contracts",
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "contract:deploy": "npm run deploy:localhost -w contracts"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
